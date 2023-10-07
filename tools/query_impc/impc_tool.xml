@@ -2,11 +2,11 @@
 	<description>query tool</description>
 	<macros>
 		<xml name="selectSeparator">
-			<param name="sep" type="select" label="Select the separator used in the file:">
+			<param name="sep" type="select" label="Select the separator used in the file">
 				<option value="t">tab</option>
 				<option value="s">single space</option>
-				<option value=",">,</option>
-				<option value=";">;</option>
+				<option value=",">Comma</option>
+				<option value=";">Semicolon</option>
 			</param>
 		</xml>
 		<xml name="inputType">
@@ -28,8 +28,6 @@
 		<requirement type="package" version="4.9.2">lxml</requirement>
 		<requirement type="package" version="3.2.2">mygene</requirement>
 	</requirements>
-	<stdio>
-	</stdio>
 	<command detect_errors="exit_code">
 		<![CDATA[
 		python3 '$__tool_directory__/impc_tool.py' 
@@ -48,7 +46,7 @@
 	</command>
 	<inputs>
 		<conditional name="query_type">
-			<param name="selector" type="select" label="Select a query:">
+			<param name="selector" type="select" label="Select a query">
 				<option value="1">1 - Extract all measured phenotypes related to a gene</option>
 				<option value="2">2 - Extract all genes having a particular phenotype or a set of phenotypes (e.g. relevant to a disease)</option>
 				<option value="3">3 - Extract all phenotypes which are present in a particular gene set (e.g. genes together in a pathway)</option>
@@ -63,10 +61,10 @@
 				<conditional name="inp_q">
 					<expand macro="inputType" />
 					<when value="str">
-						<param name="input" type="text" label="Input gene:" help="Enter a single MGI gene id or gene symbol"/>
+						<param name="input" type="text" label="Input gene" help="Enter a single MGI gene ID or gene symbol"/>
 					</when>
 					<when value="txt">
-						<param name="input" type="data" format="tabular,txt" label="Input file:" help="Enter a txt file with the Gene MGI id or gene symbol"/>
+						<param name="input" type="data" format="tabular,txt" label="Input file" help="Enter a txt file with the Gene MGI id or gene symbol"/>
 						<expand macro="selectSeparator" />
 					</when>
 				</conditional>
@@ -76,10 +74,10 @@
 				<conditional name="inp_q">
 					<expand macro="inputType" />
 					<when value="str">
-						<param name="input" type="text" label="Input phenotype or set of phenotypes:" help="Enter a single MP/HP term id or a list dividing each id with a comma (without spaces)"/>
+						<param name="input" type="text" label="Input phenotype or set of phenotypes" help="Enter a single MP/HP term id or a list dividing each id with a comma (without spaces)"/>
 					</when>
 					<when value="txt">
-						<param name="input" type="data" format="data,tabular,txt" label="Input file:" help="Enter a txt file with the MP/HP terms"/>
+						<param name="input" type="data" format="data,tabular,txt" label="Input file" help="Enter a txt file with the MP/HP terms"/>
 						<expand macro="selectSeparator" />
 					</when>
 				</conditional>
@@ -90,10 +88,10 @@
 				<conditional name="inp_q">
 					<expand macro="inputType" />
 					<when value="str">
-						<param name="input" type="text" label="Input gene or set of genes:" help="Enter a single MGI gene id (or gene symbol) or a list dividing each id with a comma (without spaces)"/>
+						<param name="input" type="text" label="Input gene or set of genes" help="Enter a single MGI gene id (or gene symbol) or a list dividing each id with a comma (without spaces)"/>
 					</when>
 					<when value="txt">
-						<param name="input" type="data" format="data,tabular,txt" label="Input file:" help="Enter a txt file with the genes MGI ids or symbols"/>
+						<param name="input" type="data" format="data,tabular,txt" label="Input file" help="Enter a txt file with the genes MGI ids or symbols"/>
 						<expand macro="selectSeparator" />
 					</when>
 				</conditional>
@@ -103,10 +101,10 @@
 				<conditional name="inp_q">
 					<expand macro="inputType" />
 					<when value="str">
-						<param name="input" type="text" label="Input phenotype or set of phenotypes:" help="Enter a single MP/HP term id or a list dividing each id with a comma (without spaces)"/>
+						<param name="input" type="text" label="Input phenotype or set of phenotypes" help="Enter a single MP/HP term id or a list dividing each id with a comma (without spaces)"/>
 					</when>
 					<when value="txt">
-						<param name="input" type="data" format="data,tabular,txt" label="Input file:" help="Enter a txt file with the MP/HP terms"/>
+						<param name="input" type="data" format="data,tabular,txt" label="Input file" help="Enter a txt file with the MP/HP terms"/>
 						<expand macro="selectSeparator" />
 					</when>
 				</conditional>
@@ -116,27 +114,27 @@
 				<conditional name="inp_q">
 					<expand macro="inputType" />
 					<when value="str">
-						<param name="input" type="text" label="Input gene:" help="Enter an IMPReSS parameter id or a list of ids dividing each id with a comma (without spaces)"/>
+						<param name="input" type="text" label="Input gene" help="Enter an IMPReSS parameter id or a list of ids dividing each id with a comma (without spaces)"/>
 					</when>
 					<when value="txt">
-						<param name="input" type="data" format="data,tabular,txt" label="Input file:" help="Enter a txt file with an IMPReSS parameter id or a list of ids"/>
+						<param name="input" type="data" format="data,tabular,txt" label="Input file" help="Enter a txt file with an IMPReSS parameter id or a list of ids"/>
 						<expand macro="selectSeparator" />
 					</when>
 				</conditional>
-				<param name="head" type="boolean" checked="true" truevalue="True" falsevalue="False" label="Choose if include the header in the output. The default value is True."/>
+				<param name="head" type="boolean" checked="true" truevalue="True" falsevalue="False" label="Choose if include the header in the output" help="The default value is True."/>
 			</when>
 			<when value="6">
 				<conditional name="inp_q">
 					<expand macro="inputType" />
 					<when value="str">
-						<param name="input" type="text" label="Input gene:" help="Enter an IMPReSS parameter id or a list of ids dividing each id with a comma (without spaces)"/>
+						<param name="input" type="text" label="Input gene" help="Enter an IMPReSS parameter id or a list of ids dividing each id with a comma (without spaces)"/>
 					</when>
 					<when value="txt">
-						<param name="input" type="data" format="data,tabular,txt" label="Input file:" help="Enter a txt file with an IMPReSS parameter id or a list of ids"/>
+						<param name="input" type="data" format="data,tabular,txt" label="Input file" help="Enter a txt file with an IMPReSS parameter id or a list of ids"/>
 						<expand macro="selectSeparator" />
 					</when>
 				</conditional>
-				<param name="head" type="boolean" checked="true" truevalue="True" falsevalue="False" label="Choose if include the header in the output. The default value is True."/>
+				<param name="head" type="boolean" checked="true" truevalue="True" falsevalue="False" label="Choose if include the header in the output" help="The default value is True."/>
 			</when>
 			<when value="7">
 				<param name="input" type="boolean" checked="true" truevalue="True" falsevalue="False" label="Include genes without identified phenotypes?" help="Choose if include in the output table also those genes that have no registred phenotypes. By default they are excluded."/>
@@ -147,10 +145,10 @@
 				<conditional name="inp_q">
 					<expand macro="inputType" />
 					<when value="str">
-						<param name="input" type="text" label="Input pipeline:" help="Enter a IMPReSS pipeline id"/>
+						<param name="input" type="text" label="Input pipeline" help="Enter a IMPReSS pipeline id"/>
 					</when>
 					<when value="txt">
-						<param name="input" type="data" format="data,tabular,txt" label="Input file:" help="Enter a txt file with an IMPReSS pipeline id"/>
+						<param name="input" type="data" format="data,tabular,txt" label="Input file" help="Enter a txt file with an IMPReSS pipeline id"/>
 						<expand macro="selectSeparator" />
 					</when>
 				</conditional>
@@ -164,7 +162,7 @@
 						<param name="input" type="text" label="Input id:" help="Enter a top level phenotype category id"/>
 					</when>
 					<when value="txt">
-						<param name="input" type="data" format="data,tabular,txt" label="Input file:" help="Enter a txt file with a top level phenotype category id"/>
+						<param name="input" type="data" format="data,tabular,txt" label="Input file" help="Enter a txt file with a top level phenotype category id"/>
 						<expand macro="selectSeparator" />
 					</when>
 				</conditional>
@@ -179,20 +177,20 @@
 	<tests>
 		<test>
 			<param name="input" value="test_query_1.txt"/>
-			<output name="output" file="test_output_1.tabular"/>
 			<param name="selector" value="1"/>
 			<param name="head" value="True"/>
 			<param name="inp_sel" value="txt"/>
 			<param name="sep" value="t"/>
+			<output name="output" file="test_output_1.tabular"/>
 		</test>
 		<test>
 			<param name="input" value="test_query_2.txt"/>
-			<output name="output" file="test_output_2.tabular"/>
 			<param name="selector" value="2"/>
 			<param name="head" value="True"/>
 			<param name="inp_sel" value="txt"/>
 			<param name="sep" value="t"/>
 			<param name="g_out" value="mgi"/>
+			<output name="output" file="test_output_2.tabular"/>
 		</test>
 	</tests>
 	<help><![CDATA[
